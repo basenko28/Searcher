@@ -50,4 +50,17 @@ public class Searcher {
         }
         return -1;
     }
+
+    public static Product[] hashMapSearch(Product[] catalog, int[] orders) {
+        HashMap<Integer, Product> map = new HashMap<>(catalog.length * 2);
+        for (Product p : catalog) {
+            map.put(p.code, p);
+        }
+
+        Product[] result = new Product[orders.length];
+        for (int i = 0; i < orders.length; i++) {
+            result[i] = map.get(orders[i]);
+        }
+        return result;
+    }
 }
